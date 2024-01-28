@@ -1,0 +1,196 @@
+URL to view log online:
+https://source.eait.uq.edu.au/viewvc/csse2310-sem2-s4751192/trunk/a4/?view=log
+
+Retrieving logs at Thu Oct 26 13:58:55 AEST 2023
+------------------------------------------------------------------------
+r1 | uqpsutto | 2023-08-02 14:20:52 +1000 (Wed, 02 Aug 2023) | 1 line
+Changed paths:
+   A /play
+   A /prac
+   A /trunk
+   A /trunk/a1
+   A /trunk/a3
+   A /trunk/a4
+
+Initial repository structure
+
+
+------------------------------------------------------------------------
+r26 | s4751192 | 2023-10-18 10:27:36 +1000 (Wed, 18 Oct 2023) | 2 lines
+Changed paths:
+   A /trunk/a4/auctionclient.c
+   A /trunk/a4/auctioneer.c
+   A /trunk/a4/makefile
+
+Initial commit.
+
+
+Index: auctionclient.c
+ auctionclient.c |   42 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+Index: auctioneer.c
+ auctioneer.c |   35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+Index: makefile
+ makefile |   28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+------------------------------------------------------------------------
+r27 | s4751192 | 2023-10-21 14:36:21 +1000 (Sat, 21 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/makefile
+
+Removed -Werror flag to allow building incomplete code.
+
+
+Index: makefile
+ makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+------------------------------------------------------------------------
+r28 | s4751192 | 2023-10-21 14:38:03 +1000 (Sat, 21 Oct 2023) | 3 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Added command line validity checking via parse_command_line() function.
+Added attempt_connect() function which attempts to connect to the given port and errors if necessary.
+
+
+Index: auctionclient.c
+ auctionclient.c |   55 ++++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 48 insertions(+), 7 deletions(-)
+
+------------------------------------------------------------------------
+r29 | s4751192 | 2023-10-22 09:54:42 +1000 (Sun, 22 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/makefile
+
+Fixed the -lpthread compiler flag, was in the wrong area causing issues with building.
+
+
+Index: makefile
+ makefile |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+------------------------------------------------------------------------
+r30 | s4751192 | 2023-10-22 09:56:54 +1000 (Sun, 22 Oct 2023) | 3 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Added functionality to create a thread and made a read_stdin() for the thread to read from standard in.
+Added echo_auctioneer() function for 'main' thread to read from auctioneer and print.
+
+
+Index: auctionclient.c
+ auctionclient.c |   92 +++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 84 insertions(+), 8 deletions(-)
+
+------------------------------------------------------------------------
+r31 | s4751192 | 2023-10-22 10:40:35 +1000 (Sun, 22 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Fixed bug in sending lines to server, newline character was missing.
+
+
+Index: auctionclient.c
+ auctionclient.c |   22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+------------------------------------------------------------------------
+r32 | s4751192 | 2023-10-23 12:14:53 +1000 (Mon, 23 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Implemented data.auctions variable with semaphore locking to track number of auctions.
+
+
+Index: auctionclient.c
+ auctionclient.c |   61 +++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 47 insertions(+), 14 deletions(-)
+
+------------------------------------------------------------------------
+r33 | s4751192 | 2023-10-23 14:17:14 +1000 (Mon, 23 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Added function comments and fixed style violations.
+
+
+Index: auctionclient.c
+ auctionclient.c |  105 ++++++++++++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 87 insertions(+), 18 deletions(-)
+
+------------------------------------------------------------------------
+r34 | s4751192 | 2023-10-23 14:45:37 +1000 (Mon, 23 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Resolved 2 memory leaks in read_stdin and attempt_connect functions. Fixed indentation. 
+
+
+Index: auctionclient.c
+ auctionclient.c |  171 ++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 88 insertions(+), 83 deletions(-)
+
+------------------------------------------------------------------------
+r35 | s4751192 | 2023-10-23 15:16:47 +1000 (Mon, 23 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctionclient.c
+
+Fixed segfault bug from freeing memory in read_stdin function.
+
+
+Index: auctionclient.c
+ auctionclient.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+------------------------------------------------------------------------
+r36 | s4751192 | 2023-10-23 16:30:12 +1000 (Mon, 23 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctioneer.c
+
+Implemented parse_command_line() function for command line error checking and argument retreival.
+
+
+Index: auctioneer.c
+ auctioneer.c |   77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 72 insertions(+), 5 deletions(-)
+
+------------------------------------------------------------------------
+r37 | s4751192 | 2023-10-24 12:05:06 +1000 (Tue, 24 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctioneer.c
+
+Added open_port() function which attemps to open the port for listening. Added proces_connections() function to listen for and accept connections from clients.
+
+
+Index: auctioneer.c
+ auctioneer.c |  140 +++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 127 insertions(+), 13 deletions(-)
+
+------------------------------------------------------------------------
+r38 | s4751192 | 2023-10-26 13:56:04 +1000 (Thu, 26 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctioneer.c
+
+Fixed sytling voilations and added necessary function comments.
+
+
+Index: auctioneer.c
+ auctioneer.c |  101 +++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 92 insertions(+), 9 deletions(-)
+
+------------------------------------------------------------------------
+r39 | s4751192 | 2023-10-26 13:57:13 +1000 (Thu, 26 Oct 2023) | 2 lines
+Changed paths:
+   M /trunk/a4/auctioneer.c
+
+Fixed indentation on line 217.
+
+
+Index: auctioneer.c
+ auctioneer.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+------------------------------------------------------------------------
